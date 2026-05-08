@@ -1,0 +1,211 @@
+{
+  "file_path": "/home/shoaib/Desktop/Pandas_Project/Pandas_NetflixProject/NetflixCleaning.ipynb",
+  "relative_path": "Pandas_NetflixProject/NetflixCleaning.ipynb",
+  "cells": [
+    {
+      "cell_index": 1,
+      "code": "import pandas as pd",
+      "output": ""
+    },
+    {
+      "cell_index": 2,
+      "code": "pd.__version__",
+      "output": "'2.1.4'"
+    },
+    {
+      "cell_index": 3,
+      "code": "data=pd.read_csv(\"netflix1.csv\")\ndata",
+      "output": "show_id     type                             title         director  \\\n0         s1    Movie              Dick Johnson Is Dead  Kirsten Johnson   \n1         s3  TV Show                         Ganglands  Julien Leclercq   \n2         s6  TV Show                     Midnight Mass    Mike Flanagan   \n3        s14    Movie  Confessions of an Invisible Girl    Bruno Garotti   \n4         s8    Movie                           Sankofa     Haile Gerima   \n...      ...      ...                               ...              ...   \n8785   s8797  TV Show                        Yunus Emre        Not Given   \n8786   s8798  TV Show                         Zak Storm        Not Given   \n8787   s8801  TV Show                Zindagi Gulzar Hai        Not Given   \n8788   s8784  TV Show                              Yoko        Not Given   \n8789   s8786  TV Show                               YOM        Not Given   \n\n            country  date_added  release_year rating   duration  \\\n0     United States   9/25/2021          2020  PG-13     90 min   \n1            France   9/24/2021          2021  TV-MA   1 Season   \n2     United States   9/24/2021          2021  TV-MA   1 Season   \n3            Brazil   9/22/2021          2021  TV-PG     91 min   \n4     United States   9/24/2021          1993  TV-MA    125 min   \n...             ...         ...           ...    ...        ...   \n8785         Turkey   1/17/2017          2016  TV-PG  2 Seasons   \n8786  United States   9/13/2018          2016  TV-Y7  3 Seasons   \n8787       Pakistan  12/15/2016          2012  TV-PG   1 Season   \n8788       Pakistan   6/23/2018          2016   TV-Y   1 Season   \n8789       Pakistan    6/7/2018          2016  TV-Y7   1 Season   \n\n                                              listed_in  \n0                                         Documentaries  \n1     Crime TV Shows, International TV Shows, TV Act...  \n2                    TV Dramas, TV Horror, TV Mysteries  \n3                    Children & Family Movies, Comedies  \n4      Dramas, Independent Movies, International Movies  \n...                                                 ...  \n8785                  International TV Shows, TV Dramas  \n8786                                           Kids' TV  \n8787  International TV Shows, Romantic TV Shows, TV ...  \n8788                                           Kids' TV  \n8789                                           Kids' TV  \n\n[8790 rows x 10 columns]"
+    },
+    {
+      "cell_index": 4,
+      "code": "#this is for the Displaying of the First 5 Files of the Data Set\ndata.head(10)",
+      "output": "show_id     type                             title             director  \\\n0      s1    Movie              Dick Johnson Is Dead      Kirsten Johnson   \n1      s3  TV Show                         Ganglands      Julien Leclercq   \n2      s6  TV Show                     Midnight Mass        Mike Flanagan   \n3     s14    Movie  Confessions of an Invisible Girl        Bruno Garotti   \n4      s8    Movie                           Sankofa         Haile Gerima   \n5      s9  TV Show     The Great British Baking Show      Andy Devonshire   \n6     s10    Movie                      The Starling       Theodore Melfi   \n7    s939    Movie   Motu Patlu in the Game of Zones          Suhas Kadav   \n8     s13    Movie                      Je Suis Karl  Christian Schwochow   \n9    s940    Movie          Motu Patlu in Wonderland          Suhas Kadav   \n\n          country date_added  release_year rating   duration  \\\n0   United States  9/25/2021          2020  PG-13     90 min   \n1          France  9/24/2021          2021  TV-MA   1 Season   \n2   United States  9/24/2021          2021  TV-MA   1 Season   \n3          Brazil  9/22/2021          2021  TV-PG     91 min   \n4   United States  9/24/2021          1993  TV-MA    125 min   \n5  United Kingdom  9/24/2021          2021  TV-14  9 Seasons   \n6   United States  9/24/2021          2021  PG-13    104 min   \n7           India   5/1/2021          2019  TV-Y7     87 min   \n8         Germany  9/23/2021          2021  TV-MA    127 min   \n9           India   5/1/2021          2013  TV-Y7     76 min   \n\n                                           listed_in  \n0                                      Documentaries  \n1  Crime TV Shows, International TV Shows, TV Act...  \n2                 TV Dramas, TV Horror, TV Mysteries  \n3                 Children & Family Movies, Comedies  \n4   Dramas, Independent Movies, International Movies  \n5                       British TV Shows, Reality TV  \n6                                   Comedies, Dramas  \n7  Children & Family Movies, Comedies, Music & Mu...  \n8                       Dramas, International Movies  \n9         Children & Family Movies, Music & Musicals"
+    },
+    {
+      "cell_index": 5,
+      "code": "# this is for the displaying the tailing \ndata.tail(2)",
+      "output": "show_id     type title   director   country date_added  release_year  \\\n8788   s8784  TV Show  Yoko  Not Given  Pakistan  6/23/2018          2016   \n8789   s8786  TV Show   YOM  Not Given  Pakistan   6/7/2018          2016   \n\n     rating  duration listed_in  \n8788   TV-Y  1 Season  Kids' TV  \n8789  TV-Y7  1 Season  Kids' TV"
+    },
+    {
+      "cell_index": 6,
+      "code": "#this is for the information \ndata.info()",
+      "output": "<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 8790 entries, 0 to 8789\nData columns (total 10 columns):\n #   Column        Non-Null Count  Dtype \n---  ------        --------------  ----- \n 0   show_id       8790 non-null   object\n 1   type          8790 non-null   object\n 2   title         8790 non-null   object\n 3   director      8790 non-null   object\n 4   country       8790 non-null   object\n 5   date_added    8790 non-null   object\n 6   release_year  8790 non-null   int64 \n 7   rating        8790 non-null   object\n 8   duration      8790 non-null   object\n 9   listed_in     8790 non-null   object\ndtypes: int64(1), object(9)\nmemory usage: 686.8+ KB"
+    },
+    {
+      "cell_index": 7,
+      "code": "# this is for the Steps that we will perform here \n\"\"\"Deleting redundant columns.\nRenaming the columns.\nDropping duplicates.\nRemove the NaN values from the dataset\nCheck for some more Transformations\nWhat is redundancy here \nDuplicate (same data in two columns)\nUseless (don't contribute to your analysis)\nIrrelevant (not related to your goal)\n\"\"\"",
+      "output": "'Deleting redundant columns.\\nRenaming the columns.\\nDropping duplicates.\\nRemove the NaN values from the dataset\\nCheck for some more Transformations'"
+    },
+    {
+      "cell_index": 8,
+      "code": "#for printing the columns of the Data Set \n\ndata.columns",
+      "output": "Index(['show_id', 'type', 'title', 'director', 'country', 'date_added',\n       'release_year', 'duration', 'listed_in'],\n      dtype='object')"
+    },
+    {
+      "cell_index": 9,
+      "code": "#lets drop the rating columns \n#if having multiple columns then just Pass the List of the columns \nif 'rating' in data.columns:\n    data.drop(columns=\"rating\", inplace=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 10,
+      "code": "# rating column will still show up here but if we do inplace true when w were dropping this every thing will be fixed \ndata.head()",
+      "output": "show_id     type                             title         director  \\\n0      s1    Movie              Dick Johnson Is Dead  Kirsten Johnson   \n1      s3  TV Show                         Ganglands  Julien Leclercq   \n2      s6  TV Show                     Midnight Mass    Mike Flanagan   \n3     s14    Movie  Confessions of an Invisible Girl    Bruno Garotti   \n4      s8    Movie                           Sankofa     Haile Gerima   \n\n         country date_added  release_year  duration  \\\n0  United States  9/25/2021          2020    90 min   \n1         France  9/24/2021          2021  1 Season   \n2  United States  9/24/2021          2021  1 Season   \n3         Brazil  9/22/2021          2021    91 min   \n4  United States  9/24/2021          1993   125 min   \n\n                                           listed_in  \n0                                      Documentaries  \n1  Crime TV Shows, International TV Shows, TV Act...  \n2                 TV Dramas, TV Horror, TV Mysteries  \n3                 Children & Family Movies, Comedies  \n4   Dramas, Independent Movies, International Movies"
+    },
+    {
+      "cell_index": 11,
+      "code": "#Now lets Capalized the names of the columns \nnew_column_names = []\nfor i in data.columns:\n    new_column_names.append(i.capitalize())  # append instead of print\n\ndata.columns = new_column_names\ndata",
+      "output": "Show_id     Type                             Title         Director  \\\n0         s1    Movie              Dick Johnson Is Dead  Kirsten Johnson   \n1         s3  TV Show                         Ganglands  Julien Leclercq   \n2         s6  TV Show                     Midnight Mass    Mike Flanagan   \n3        s14    Movie  Confessions of an Invisible Girl    Bruno Garotti   \n4         s8    Movie                           Sankofa     Haile Gerima   \n...      ...      ...                               ...              ...   \n8785   s8797  TV Show                        Yunus Emre        Not Given   \n8786   s8798  TV Show                         Zak Storm        Not Given   \n8787   s8801  TV Show                Zindagi Gulzar Hai        Not Given   \n8788   s8784  TV Show                              Yoko        Not Given   \n8789   s8786  TV Show                               YOM        Not Given   \n\n            Country  Date_added  Release_year   Duration  \\\n0     United States   9/25/2021          2020     90 min   \n1            France   9/24/2021          2021   1 Season   \n2     United States   9/24/2021          2021   1 Season   \n3            Brazil   9/22/2021          2021     91 min   \n4     United States   9/24/2021          1993    125 min   \n...             ...         ...           ...        ...   \n8785         Turkey   1/17/2017          2016  2 Seasons   \n8786  United States   9/13/2018          2016  3 Seasons   \n8787       Pakistan  12/15/2016          2012   1 Season   \n8788       Pakistan   6/23/2018          2016   1 Season   \n8789       Pakistan    6/7/2018          2016   1 Season   \n\n                                              Listed_in  \n0                                         Documentaries  \n1     Crime TV Shows, International TV Shows, TV Act...  \n2                    TV Dramas, TV Horror, TV Mysteries  \n3                    Children & Family Movies, Comedies  \n4      Dramas, Independent Movies, International Movies  \n...                                                 ...  \n8785                  International TV Shows, TV Dramas  \n8786                                           Kids' TV  \n8787  International TV Shows, Romantic TV Shows, TV ...  \n8788                                           Kids' TV  \n8789                                           Kids' TV  \n\n[8790 rows x 9 columns]"
+    },
+    {
+      "cell_index": 12,
+      "code": "#Noe give them the names \ndata.columns=new_column_names\ndata.head()",
+      "output": "Show_id     Type                             Title         Director  \\\n0      s1    Movie              Dick Johnson Is Dead  Kirsten Johnson   \n1      s3  TV Show                         Ganglands  Julien Leclercq   \n2      s6  TV Show                     Midnight Mass    Mike Flanagan   \n3     s14    Movie  Confessions of an Invisible Girl    Bruno Garotti   \n4      s8    Movie                           Sankofa     Haile Gerima   \n\n         Country Date_added  Release_year  Duration  \\\n0  United States  9/25/2021          2020    90 min   \n1         France  9/24/2021          2021  1 Season   \n2  United States  9/24/2021          2021  1 Season   \n3         Brazil  9/22/2021          2021    91 min   \n4  United States  9/24/2021          1993   125 min   \n\n                                           Listed_in  \n0                                      Documentaries  \n1  Crime TV Shows, International TV Shows, TV Act...  \n2                 TV Dramas, TV Horror, TV Mysteries  \n3                 Children & Family Movies, Comedies  \n4   Dramas, Independent Movies, International Movies"
+    },
+    {
+      "cell_index": 13,
+      "code": "#checking duplicates\ndata.duplicated()",
+      "output": "0       False\n1       False\n2       False\n3       False\n4       False\n        ...  \n8785    False\n8786    False\n8787    False\n8788    False\n8789    False\nLength: 8790, dtype: bool"
+    },
+    {
+      "cell_index": 14,
+      "code": "#this is for the Sum of the Duplicated f the Sum\ndata.duplicated().sum()",
+      "output": "0"
+    },
+    {
+      "cell_index": 15,
+      "code": "data.drop_duplicates(inplace=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 16,
+      "code": "#this is for the",
+      "output": ""
+    },
+    {
+      "cell_index": 17,
+      "code": "# Check for Missing Values\ndata.isna().sum()",
+      "output": "show_id         0\ntype            0\ntitle           0\ndirector        0\ncountry         0\ndate_added      0\nrelease_year    0\nrating          0\nduration        0\nlisted_in       0\ndtype: int64"
+    },
+    {
+      "cell_index": 18,
+      "code": "#\ndata.dropna(inplace=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 19,
+      "code": "data.head()",
+      "output": "show_id     type                             title         director  \\\n0      s1    Movie              Dick Johnson Is Dead  Kirsten Johnson   \n1      s3  TV Show                         Ganglands  Julien Leclercq   \n2      s6  TV Show                     Midnight Mass    Mike Flanagan   \n3     s14    Movie  Confessions of an Invisible Girl    Bruno Garotti   \n4      s8    Movie                           Sankofa     Haile Gerima   \n\n         country date_added  release_year rating  duration  \\\n0  United States  9/25/2021          2020  PG-13    90 min   \n1         France  9/24/2021          2021  TV-MA  1 Season   \n2  United States  9/24/2021          2021  TV-MA  1 Season   \n3         Brazil  9/22/2021          2021  TV-PG    91 min   \n4  United States  9/24/2021          1993  TV-MA   125 min   \n\n                                           listed_in  \n0                                      Documentaries  \n1  Crime TV Shows, International TV Shows, TV Act...  \n2                 TV Dramas, TV Horror, TV Mysteries  \n3                 Children & Family Movies, Comedies  \n4   Dramas, Independent Movies, International Movies"
+    },
+    {
+      "cell_index": 20,
+      "code": "data[\"show_id\"].unique()",
+      "output": "array(['s1', 's3', 's6', ..., 's8801', 's8784', 's8786'], dtype=object)"
+    },
+    {
+      "cell_index": 21,
+      "code": "# Safely removes the 's' only if it's at the beginning\ndata[\"show_id\"] = data[\"show_id\"].str.lstrip(\"s\")",
+      "output": ""
+    },
+    {
+      "cell_index": 22,
+      "code": "data.head()",
+      "output": "show_id     type                             title         director  \\\n0       1    Movie              Dick Johnson Is Dead  Kirsten Johnson   \n1       3  TV Show                         Ganglands  Julien Leclercq   \n2       6  TV Show                     Midnight Mass    Mike Flanagan   \n3      14    Movie  Confessions of an Invisible Girl    Bruno Garotti   \n4       8    Movie                           Sankofa     Haile Gerima   \n\n         country date_added  release_year rating  duration  \\\n0  United States  9/25/2021          2020  PG-13    90 min   \n1         France  9/24/2021          2021  TV-MA  1 Season   \n2  United States  9/24/2021          2021  TV-MA  1 Season   \n3         Brazil  9/22/2021          2021  TV-PG    91 min   \n4  United States  9/24/2021          1993  TV-MA   125 min   \n\n                                           listed_in  \n0                                      Documentaries  \n1  Crime TV Shows, International TV Shows, TV Act...  \n2                 TV Dramas, TV Horror, TV Mysteries  \n3                 Children & Family Movies, Comedies  \n4   Dramas, Independent Movies, International Movies"
+    },
+    {
+      "cell_index": 23,
+      "code": "#this is for the Checking of the type \ntype(data[\"show_id\"][0])",
+      "output": "str"
+    },
+    {
+      "cell_index": 24,
+      "code": "data[\"show_id\"] = data[\"show_id\"].astype(int)\ntype(data[\"show_id\"][0])\ndata = data.sort_values(\"show_id\", ascending=True)\ndata\ndata = data.sort_values(\"country\", ascending=True)\ndata",
+      "output": "show_id     type                                          title  \\\n2786     2787    Movie  A Life of Speed: The Juan Manuel Fangio Story   \n7785     7801  TV Show                                    Psiconautas   \n1713     1714    Movie                         Memories of a Teenager   \n7730     7746    Movie                             Pizza, birra, faso   \n303       304    Movie                           Esperando la carroza   \n...       ...      ...                                            ...   \n7104     7115    Movie                                        Jackpot   \n6521     6528    Movie                               Conjuring Spirit   \n6808     6817    Movie                                          Furie   \n5611     5613    Movie                              Hitler - A Career   \n2446     2447    Movie                                       Cook Off   \n\n                                   director       country  date_added  \\\n2786                        Francisco Macri     Argentina   3-20-2020   \n7785                              Not Given     Argentina   4-15-2018   \n1713                        Lucas Santa Ana     Argentina  11-12-2020   \n7730  Israel Adri\u00e1n Caetano, Bruno Stagnaro     Argentina   3-15-2018   \n303                         Alejandro Doria     Argentina    8-5-2021   \n...                                     ...           ...         ...   \n7104                          Dustin Nguyen       Vietnam   10-6-2018   \n6521                            Van M. Pham       Vietnam   8-28-2018   \n6808                            Le Van Kiet       Vietnam   9-25-2019   \n5611  Joachim Fest, Christian Herrendoerfer  West Germany   2-10-2017   \n2446                        Tomas Brickhill      Zimbabwe    6-1-2020   \n\n      release_year rating   duration  \\\n2786          2020  TV-14     93 min   \n7785          2016  TV-MA  2 Seasons   \n1713          2019  TV-MA     97 min   \n7730          1998  TV-MA     81 min   \n303           1985  TV-MA     95 min   \n...            ...    ...        ...   \n7104          2015  TV-14     92 min   \n6521          2014  TV-MA    112 min   \n6808          2019  TV-MA     97 min   \n5611          1977  TV-MA    150 min   \n2446          2017   TV-G    100 min   \n\n                                              listed_in  \n2786  Documentaries, International Movies, Sports Mo...  \n7785  International TV Shows, Spanish-Language TV Sh...  \n1713         Dramas, International Movies, LGBTQ Movies  \n7730                       Dramas, International Movies  \n303         Comedies, Cult Movies, International Movies  \n...                                                 ...  \n7104             Comedies, Dramas, International Movies  \n6521     Horror Movies, International Movies, Thrillers  \n6808   Action & Adventure, Dramas, International Movies  \n5611                Documentaries, International Movies  \n2446    Comedies, International Movies, Romantic Movies  \n\n[8790 rows x 10 columns]"
+    },
+    {
+      "cell_index": 25,
+      "code": "data[\"date_added\"] = data[\"date_added\"].apply(lambda x : x.replace(\"/\",\"-\"))\n                                              \ndata\n\ndata.to_csv(\"cleaneddata.csv\",index=False)",
+      "output": ""
+    },
+    {
+      "cell_index": 26,
+      "code": "# Selection using loc for specific rows and columns\nprint(\"Selection using loc:\")\ndisplay(data.loc[0:5, ['title', 'country', 'type']])",
+      "output": "Selection using loc:\n\n                              title         country     type\n0              Dick Johnson Is Dead   United States    Movie\n1                         Ganglands          France  TV Show\n2                     Midnight Mass   United States  TV Show\n3  Confessions of an Invisible Girl          Brazil    Movie\n4                           Sankofa   United States    Movie\n5     The Great British Baking Show  United Kingdom  TV Show"
+    },
+    {
+      "cell_index": 27,
+      "code": "# Selection using iloc for specific rows and columns (e.g., first 5 rows, first 3 columns)\nprint(\"Selection using iloc:\")\ndisplay(data.iloc[:5, :3])",
+      "output": "Selection using iloc:\n\n  show_id     type                             title\n0      s1    Movie              Dick Johnson Is Dead\n1      s3  TV Show                         Ganglands\n2      s6  TV Show                     Midnight Mass\n3     s14    Movie  Confessions of an Invisible Girl\n4      s8    Movie                           Sankofa"
+    },
+    {
+      "cell_index": 28,
+      "code": "# Filter all 'Movie' type with release_year > 2020\nfiltered_data = data[(data['type'] == 'Movie') & (data['release_year'] > 2020)]\ndisplay(filtered_data.head())",
+      "output": "show_id   type                             title  \\\n3      s14  Movie  Confessions of an Invisible Girl   \n6      s10  Movie                      The Starling   \n8      s13  Movie                      Je Suis Karl   \n12    s852  Movie                  99 Songs (Tamil)   \n13    s471  Movie       Bridgerton - The Afterparty   \n\n                           director        country date_added  release_year  \\\n3                     Bruno Garotti         Brazil  9/22/2021          2021   \n6                    Theodore Melfi  United States  9/24/2021          2021   \n8               Christian Schwochow        Germany  9/23/2021          2021   \n12                        Not Given       Pakistan  5/21/2021          2021   \n13  Krysia Plonka, Kristian Mercado  United States  7/13/2021          2021   \n\n   rating duration                                       listed_in  \n3   TV-PG   91 min              Children & Family Movies, Comedies  \n6   PG-13  104 min                                Comedies, Dramas  \n8   TV-MA  127 min                    Dramas, International Movies  \n12  TV-14  131 min  Dramas, International Movies, Music & Musicals  \n13  TV-14   39 min                                          Movies"
+    },
+    {
+      "cell_index": 29,
+      "code": "# Filter TV Shows from 'India' using query\nindia_tv_shows = data.query(\"country == 'India' and type == 'TV Show'\")\ndisplay(india_tv_shows.head())",
+      "output": "show_id     type                         title  \\\n409     s298  TV Show                      Navarasa   \n954     s912  TV Show              Sab Jholmaal Hai   \n1225   s1294  TV Show                 Pitta Kathalu   \n1371   s1521  TV Show               Paava Kadhaigal   \n2387   s3037  TV Show  Jamtara - Sabka Number Ayega   \n\n                                               director country  date_added  \\\n409   Bejoy Nambiar, Priyadarshan, Karthik Narain, V...   India    8/6/2021   \n954                                         Vijay Roche   India    5/7/2021   \n1225  Tharun Bhascker Dhaassyam, B. V. Nandini Reddy...   India   2/19/2021   \n1371  Sudha Kongara, Vignesh Shivan, Gautham Vasudev...   India  12/18/2020   \n2387                                    Soumendra Padhi   India   1/10/2020   \n\n      release_year rating   duration  \\\n409           2021  TV-MA   1 Season   \n954           2017  TV-Y7  2 Seasons   \n1225          2021  TV-MA   1 Season   \n1371          2020  TV-MA   1 Season   \n2387          2020  TV-MA   1 Season   \n\n                                              listed_in  \n409                                            TV Shows  \n954                               Kids' TV, TV Comedies  \n1225                  International TV Shows, TV Dramas  \n1371                  International TV Shows, TV Dramas  \n2387  Crime TV Shows, International TV Shows, TV Dramas"
+    },
+    {
+      "cell_index": 30,
+      "code": "# Group by 'country' and 'type', then count titles and find mean release year\nagg_results = data.groupby(['country', 'type']).agg({\n    'title': 'count',\n    'release_year': 'mean'\n}).rename(columns={'title': 'count', 'release_year': 'avg_release_year'})\n\ndisplay(agg_results.sort_values(by='count', ascending=False).head(10))",
+      "output": "count  avg_release_year\ncountry        type                            \nUnited States  Movie     2395       2011.926931\nIndia          Movie      976       2011.668033\nUnited States  TV Show    845       2016.550296\nUnited Kingdom Movie      387       2013.519380\nPakistan       TV Show    350       2017.174286\nNot Given      Movie      257       2016.696498\nUnited Kingdom TV Show    251       2015.808765\nCanada         Movie      187       2016.192513\nJapan          TV Show    172       2014.819767\nSouth Korea    TV Show    165       2017.030303"
+    },
+    {
+      "cell_index": 31,
+      "code": "# Count number of titles per rating\nprint(\"Top 5 countries by content count:\")\ndisplay(data['country'].value_counts().head(5))",
+      "output": "Top 5 countries by content count:\n\ncountry\nUnited States     3240\nIndia             1057\nUnited Kingdom     638\nPakistan           421\nNot Given          287\nName: count, dtype: int64"
+    },
+    {
+      "cell_index": 32,
+      "code": "# Pivot table showing count of Movies vs TV Shows per country (top 10 countries)\ntop_countries = data['country'].value_counts().head(10).index\npivot_df = data[data['country'].isin(top_countries)].pivot_table(\n    index='country', \n    columns='type', \n    values='title', \n    aggfunc='count',\n    fill_value=0\n)\ndisplay(pivot_df)",
+      "output": "type            Movie  TV Show\ncountry                       \nCanada            187       84\nFrance            148       65\nIndia             976       81\nJapan              87      172\nNot Given         257       30\nPakistan           71      350\nSouth Korea        49      165\nSpain             129       53\nUnited Kingdom    387      251\nUnited States    2395      845"
+    },
+    {
+      "cell_index": 33,
+      "code": "regions_data = pd.DataFrame({\n    'country': ['United States', 'India', 'United Kingdom', 'Japan', 'South Korea'],\n    'region': ['North America', 'South Asia', 'Europe', 'East Asia', 'East Asia']\n})\n\n# Perform a left merge\nmerged_data = data.merge(regions_data, on='country', how='left')\ndisplay(merged_data[['title', 'country', 'region']].head(10))",
+      "output": "title         country         region\n0              Dick Johnson Is Dead   United States  North America\n1                         Ganglands          France            NaN\n2                     Midnight Mass   United States  North America\n3  Confessions of an Invisible Girl          Brazil            NaN\n4                           Sankofa   United States  North America\n5     The Great British Baking Show  United Kingdom         Europe\n6                      The Starling   United States  North America\n7   Motu Patlu in the Game of Zones           India     South Asia\n8                      Je Suis Karl         Germany            NaN\n9          Motu Patlu in Wonderland           India     South Asia"
+    },
+    {
+      "cell_index": 34,
+      "code": "# Concat: Split and recombine (stacking Movies and TV Shows vertically)\nmovies = data[data['type'] == 'Movie'].head(3)\ntv_shows = data[data['type'] == 'TV Show'].head(3)\ncombined = pd.concat([movies, tv_shows], axis=0)\ndisplay(combined[['title', 'type']])",
+      "output": "title     type\n0              Dick Johnson Is Dead    Movie\n3  Confessions of an Invisible Girl    Movie\n4                           Sankofa    Movie\n1                         Ganglands  TV Show\n2                     Midnight Mass  TV Show\n5     The Great British Baking Show  TV Show"
+    },
+    {
+      "cell_index": 35,
+      "code": "# Use map for simple value replacement (e.g., shorter labels for types)\ndata['short_type'] = data['type'].map({'Movie': 'M', 'TV Show': 'TV'})\n\n# Rename columns\ndata = data.rename(columns={'listed_in': 'genres'})\n\ndisplay(data[['title', 'short_type', 'genres']].head())",
+      "output": "title short_type  \\\n0              Dick Johnson Is Dead          M   \n1                         Ganglands         TV   \n2                     Midnight Mass         TV   \n3  Confessions of an Invisible Girl          M   \n4                           Sankofa          M   \n\n                                              genres  \n0                                      Documentaries  \n1  Crime TV Shows, International TV Shows, TV Act...  \n2                 TV Dramas, TV Horror, TV Mysteries  \n3                 Children & Family Movies, Comedies  \n4   Dramas, Independent Movies, International Movies"
+    },
+    {
+      "cell_index": 36,
+      "code": "# Melt: Reshape for analysis (taking title, type, and release_year and making them key-value pairs)\nmelted_df = data.head(5).melt(id_vars=['show_id'], value_vars=['title', 'type'], var_name='attribute', value_name='value')\ndisplay(melted_df)",
+      "output": "show_id attribute                             value\n0      s1     title              Dick Johnson Is Dead\n1      s3     title                         Ganglands\n2      s6     title                     Midnight Mass\n3     s14     title  Confessions of an Invisible Girl\n4      s8     title                           Sankofa\n5      s1      type                             Movie\n6      s3      type                           TV Show\n7      s6      type                           TV Show\n8     s14      type                             Movie\n9      s8      type                             Movie"
+    },
+    {
+      "cell_index": 37,
+      "code": "# str.contains: Find titles containing 'Action' or 'Drama' in genres (case insensitive)\ndrama_titles = data[data['genres'].str.contains('Drama', case=False, na=False)]\nprint(\"Sample Drama Titles:\")\ndisplay(drama_titles[['title', 'genres']].head())\n\n# str.split: Split genres by comma and expand (look at the first title's genres)\nprint(\"Split genres for first 5 titles:\")\ndisplay(data['genres'].str.split(',').head(5))\n\n# str.extract: Extract first word of title\ndata['first_word'] = data['title'].str.extract(r'^(\\w+)')\ndisplay(data[['title', 'first_word']].head())",
+      "output": "Sample Drama Titles:\n\n               title                                            genres\n2      Midnight Mass                TV Dramas, TV Horror, TV Mysteries\n4            Sankofa  Dramas, Independent Movies, International Movies\n6       The Starling                                  Comedies, Dramas\n8       Je Suis Karl                      Dramas, International Movies\n12  99 Songs (Tamil)    Dramas, International Movies, Music & Musicals\nSplit genres for first 5 titles:\n\n0                                      [Documentaries]\n1    [Crime TV Shows,  International TV Shows,  TV ...\n2               [TV Dramas,  TV Horror,  TV Mysteries]\n3                [Children & Family Movies,  Comedies]\n4    [Dramas,  Independent Movies,  International M...\nName: genres, dtype: object\n                              title   first_word\n0              Dick Johnson Is Dead         Dick\n1                         Ganglands    Ganglands\n2                     Midnight Mass     Midnight\n3  Confessions of an Invisible Girl  Confessions\n4                           Sankofa      Sankofa"
+    },
+    {
+      "cell_index": 38,
+      "code": "# Convert date_added to actual datetime objects\ndata['date_added'] = pd.to_datetime(data['date_added'])\n\n# Extract parts of the date\ndata['added_year'] = data['date_added'].dt.year\ndata['added_month'] = data['date_added'].dt.month_name()\ndata['added_day_name'] = data['date_added'].dt.day_name()\n\ndisplay(data[['title', 'date_added', 'added_year', 'added_month', 'added_day_name']].head())",
+      "output": "title date_added  added_year added_month  \\\n0              Dick Johnson Is Dead 2021-09-25        2021   September   \n1                         Ganglands 2021-09-24        2021   September   \n2                     Midnight Mass 2021-09-24        2021   September   \n3  Confessions of an Invisible Girl 2021-09-22        2021   September   \n4                           Sankofa 2021-09-24        2021   September   \n\n  added_day_name  \n0       Saturday  \n1         Friday  \n2         Friday  \n3      Wednesday  \n4         Friday"
+    },
+    {
+      "cell_index": 39,
+      "code": "# describe: Statistical summary of numerical columns\nprint(\"Statistical Summary:\")\ndisplay(data.describe())\n\n# Mean and Median of release_year\nprint(f\"Mean Release Year: {data['release_year'].mean():.2f}\")\nprint(f\"Median Release Year: {data['release_year'].median()}\")\n\n# Correlation (between numerical columns - here we only have release_year and added_year)\nprint(\"\\nCorrelation Matrix:\")\ndisplay(data[['release_year', 'added_year']].corr())",
+      "output": "Statistical Summary:\n\n                          date_added  release_year   added_year\ncount                           8790   8790.000000  8790.000000\nmean   2019-05-17 21:44:01.638225408   2014.183163  2018.873606\nmin              2008-01-01 00:00:00   1925.000000  2008.000000\n25%              2018-04-06 00:00:00   2013.000000  2018.000000\n50%              2019-07-03 00:00:00   2017.000000  2019.000000\n75%              2020-08-19 18:00:00   2019.000000  2020.000000\nmax              2021-09-25 00:00:00   2021.000000  2021.000000\nstd                              NaN      8.825466     1.573568\nMean Release Year: 2014.18\nMedian Release Year: 2017.0\n\nCorrelation Matrix:\n\n              release_year  added_year\nrelease_year      1.000000    0.111624\nadded_year        0.111624    1.000000"
+    },
+    {
+      "cell_index": 40,
+      "code": "# Count releases per year\nyearly_counts = data.groupby('release_year').size().reset_index(name='count').sort_values('release_year')\n\n# cumsum: Cumulative count of releases over time\nyearly_counts['cumulative_total'] = yearly_counts['count'].cumsum()\n\n# rolling: 5-year moving average of release counts\nyearly_counts['moving_avg_5yr'] = yearly_counts['count'].rolling(window=5).mean()\n\n# shift: Difference in count compared to previous year\nyearly_counts['diff_previous_year'] = yearly_counts['count'] - yearly_counts['count'].shift(1)\n\ndisplay(yearly_counts.tail(10))",
+      "output": "release_year  count  cumulative_total  moving_avg_5yr  diff_previous_year\n64          2012    236              1945           180.0                51.0\n65          2013    286              2231           210.2                50.0\n66          2014    352              2583           250.2                66.0\n67          2015    555              3138           322.8               203.0\n68          2016    901              4039           466.0               346.0\n69          2017   1030              5069           624.8               129.0\n70          2018   1146              6215           796.8               116.0\n71          2019   1030              7245           932.4              -116.0\n72          2020    953              8198          1012.0               -77.0\n73          2021    592              8790           950.2              -361.0"
+    },
+    {
+      "cell_index": 41,
+      "code": "# pd.cut: Bin release years into decades\nbins = [1920, 1980, 1990, 2000, 2010, 2020, 2030]\nlabels = ['Pre-80s', '80s', '90s', '2000s', '2010s', '2020s']\ndata['decade'] = pd.cut(data['release_year'], bins=bins, labels=labels)\ndisplay(data[['title', 'release_year', 'decade']].head())\n\n# pd.get_dummies: One-hot encoding for the 'short_type' column\ndummies = pd.get_dummies(data['short_type'], prefix='type')\ndisplay(dummies.head())\n\n# MultiIndex example: Grouping by Decade and Country\nmulti_indexed = data.groupby(['decade', 'country']).size().head(10)\nprint(\"MultiIndex Series (Decade, Country):\")\nprint(multi_indexed)",
+      "output": "title  release_year decade\n0              Dick Johnson Is Dead          2020  2010s\n1                         Ganglands          2021  2020s\n2                     Midnight Mass          2021  2020s\n3  Confessions of an Invisible Girl          2021  2020s\n4                           Sankofa          1993    90s\n   type_M  type_TV\n0    True    False\n1   False     True\n2   False     True\n3    True    False\n4    True    False\nMultiIndex Series (Decade, Country):\ndecade   country   \nPre-80s  Argentina     0\n         Australia     1\n         Austria       0\n         Bangladesh    0\n         Belarus       0\n         Belgium       0\n         Brazil        0\n         Bulgaria      0\n         Cambodia      0\n         Cameroon      0\ndtype: int64\n\n/tmp/ipykernel_8903/3404350162.py:12: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.\n  multi_indexed = data.groupby(['decade', 'country']).size().head(10)"
+    }
+  ]
+}

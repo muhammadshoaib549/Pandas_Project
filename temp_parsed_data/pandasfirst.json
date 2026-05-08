@@ -1,0 +1,476 @@
+{
+  "file_path": "/home/shoaib/Desktop/Pandas_Project/pandasfirst.ipynb",
+  "relative_path": "pandasfirst.ipynb",
+  "cells": [
+    {
+      "cell_index": 1,
+      "code": "import numpy as np\nimport pandas as pd",
+      "output": ""
+    },
+    {
+      "cell_index": 2,
+      "code": "# string\ncountry = ['India','Pakistan','USA','Nepal','Srilanka']\n\npd.Series(country)",
+      "output": ""
+    },
+    {
+      "cell_index": 3,
+      "code": "# integers\nruns = [13,24,56,78,100]\n\nruns_ser = pd.Series(runs)",
+      "output": ""
+    },
+    {
+      "cell_index": 4,
+      "code": "# custom index\nmarks = [67,57,89,100]\nsubjects = ['maths','english','science','hindi']\n\npd.Series(marks,index=subjects)",
+      "output": ""
+    },
+    {
+      "cell_index": 5,
+      "code": "# setting a name\nmarks = pd.Series(marks,index=subjects,name='Nitish ke marks')\nmarks",
+      "output": ""
+    },
+    {
+      "cell_index": 6,
+      "code": "marks = {\n    'maths':67,\n    'english':57,\n    'science':89,\n    'hindi':100\n}\n\nmarks_series = pd.Series(marks,name='nitish ke marks')\nmarks_series",
+      "output": ""
+    },
+    {
+      "cell_index": 7,
+      "code": "# size\nmarks_series.size",
+      "output": ""
+    },
+    {
+      "cell_index": 8,
+      "code": "# dtype\nmarks_series.dtype",
+      "output": ""
+    },
+    {
+      "cell_index": 9,
+      "code": "# name\nmarks_series.name",
+      "output": ""
+    },
+    {
+      "cell_index": 10,
+      "code": "# is_unique\nmarks_series.is_unique",
+      "output": ""
+    },
+    {
+      "cell_index": 11,
+      "code": "pd.Series([1,1,2,3,4,5]).is_unique",
+      "output": ""
+    },
+    {
+      "cell_index": 12,
+      "code": "# index\nmarks_series.index",
+      "output": ""
+    },
+    {
+      "cell_index": 13,
+      "code": "runs_ser.index",
+      "output": ""
+    },
+    {
+      "cell_index": 14,
+      "code": "# values\nmarks_series.values",
+      "output": ""
+    },
+    {
+      "cell_index": 15,
+      "code": "# with one col\nsubs = pd.read_csv('/content/subs.csv',squeeze=True)\nsubs",
+      "output": ""
+    },
+    {
+      "cell_index": 16,
+      "code": "# with 2 cols\nvk = pd.read_csv('/content/kohli_ipl.csv',index_col='match_no',squeeze=True)\nvk",
+      "output": ""
+    },
+    {
+      "cell_index": 17,
+      "code": "movies = pd.read_csv('/content/bollywood.csv',index_col='movie',squeeze=True)\nmovies",
+      "output": ""
+    },
+    {
+      "cell_index": 18,
+      "code": "# head and tail\nsubs.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 19,
+      "code": "vk.head(3)",
+      "output": ""
+    },
+    {
+      "cell_index": 20,
+      "code": "vk.tail(10)",
+      "output": ""
+    },
+    {
+      "cell_index": 21,
+      "code": "# sample\nmovies.sample(5)",
+      "output": ""
+    },
+    {
+      "cell_index": 22,
+      "code": "# value_counts -> movies\nmovies.value_counts()",
+      "output": ""
+    },
+    {
+      "cell_index": 23,
+      "code": "# sort_values -> inplace\nvk.sort_values(ascending=False).head(1).values[0]",
+      "output": ""
+    },
+    {
+      "cell_index": 24,
+      "code": "vk.sort_values(ascending=False)",
+      "output": ""
+    },
+    {
+      "cell_index": 25,
+      "code": "# sort_index -> inplace -> movies\nmovies.sort_index(ascending=False,inplace=True)\n\nmovies",
+      "output": ""
+    },
+    {
+      "cell_index": 26,
+      "code": "vk.sort_values(inplace=True)\n\nvk",
+      "output": ""
+    },
+    {
+      "cell_index": 27,
+      "code": "# count\nvk.count()",
+      "output": ""
+    },
+    {
+      "cell_index": 28,
+      "code": "# sum -> product\nsubs.sum()",
+      "output": ""
+    },
+    {
+      "cell_index": 29,
+      "code": "# mean -> median -> mode -> std -> var\nsubs.mean()\nprint(vk.median())\nprint(movies.mode())\nprint(subs.std())\nprint(vk.var())",
+      "output": ""
+    },
+    {
+      "cell_index": 30,
+      "code": "# min/max\nsubs.max()",
+      "output": ""
+    },
+    {
+      "cell_index": 31,
+      "code": "# describe\nsubs.describe()",
+      "output": ""
+    },
+    {
+      "cell_index": 32,
+      "code": "# integer indexing\nx = pd.Series([12,13,14,35,46,57,58,79,9])\nx",
+      "output": ""
+    },
+    {
+      "cell_index": 33,
+      "code": "# negative indexing\nx[-1]",
+      "output": ""
+    },
+    {
+      "cell_index": 34,
+      "code": "movies",
+      "output": ""
+    },
+    {
+      "cell_index": 35,
+      "code": "vk[-1]",
+      "output": ""
+    },
+    {
+      "cell_index": 36,
+      "code": "marks_series[-1]",
+      "output": ""
+    },
+    {
+      "cell_index": 37,
+      "code": "# slicing\nvk[5:16]",
+      "output": ""
+    },
+    {
+      "cell_index": 38,
+      "code": "# negative slicing\nvk[-5:]",
+      "output": ""
+    },
+    {
+      "cell_index": 39,
+      "code": "movies[::2]",
+      "output": ""
+    },
+    {
+      "cell_index": 40,
+      "code": "# fancy indexing\nvk[[1,3,4,5]]",
+      "output": ""
+    },
+    {
+      "cell_index": 41,
+      "code": "# indexing with labels -> fancy indexing\nmovies['2 States (2014 film)']",
+      "output": ""
+    },
+    {
+      "cell_index": 42,
+      "code": "# using indexing\nmarks_series[1] = 100\nmarks_series",
+      "output": ""
+    },
+    {
+      "cell_index": 43,
+      "code": "# what if an index does not exist\nmarks_series['evs'] = 100\n\nmarks_series",
+      "output": ""
+    },
+    {
+      "cell_index": 44,
+      "code": "# slicing\nruns_ser[2:4] = [100,100]\nruns_ser",
+      "output": ""
+    },
+    {
+      "cell_index": 45,
+      "code": "# fancy indexing\nruns_ser[[0,3,4]] = [0,0,0]\nruns_ser",
+      "output": ""
+    },
+    {
+      "cell_index": 46,
+      "code": "# using index label\nmovies['2 States (2014 film)'] = 'Alia Bhatt'\nmovies",
+      "output": ""
+    },
+    {
+      "cell_index": 47,
+      "code": "# len/type/dir/sorted/max/min\nprint(len(subs))\nprint(type(subs))\nprint(dir(subs))\nprint(sorted(subs))\nprint(min(subs))\nprint(max(subs))",
+      "output": ""
+    },
+    {
+      "cell_index": 48,
+      "code": "# type conversion\nlist(marks_series)",
+      "output": ""
+    },
+    {
+      "cell_index": 49,
+      "code": "dict(marks_series)",
+      "output": ""
+    },
+    {
+      "cell_index": 50,
+      "code": "# membership operator\n\n'2 States (2014 film)' in movies",
+      "output": ""
+    },
+    {
+      "cell_index": 51,
+      "code": "'Alia Bhatt' in movies.values",
+      "output": ""
+    },
+    {
+      "cell_index": 52,
+      "code": "movies",
+      "output": ""
+    },
+    {
+      "cell_index": 53,
+      "code": "# looping\nfor i in movies.index:\n  print(i)",
+      "output": ""
+    },
+    {
+      "cell_index": 54,
+      "code": "# Arithmetic Operators(Broadcasting)\n100 + marks_series",
+      "output": ""
+    },
+    {
+      "cell_index": 55,
+      "code": "# Relational Operators\n\nvk >= 50",
+      "output": ""
+    },
+    {
+      "cell_index": 56,
+      "code": "# Find no of 50's and 100's scored by kohli\nvk[vk >= 50].size",
+      "output": ""
+    },
+    {
+      "cell_index": 57,
+      "code": "# find number of ducks\nvk[vk == 0].size",
+      "output": ""
+    },
+    {
+      "cell_index": 58,
+      "code": "# Count number of day when I had more than 200 subs a day\nsubs[subs > 200].size",
+      "output": ""
+    },
+    {
+      "cell_index": 59,
+      "code": "# find actors who have done more than 20 movies\nnum_movies = movies.value_counts()\nnum_movies[num_movies > 20]",
+      "output": ""
+    },
+    {
+      "cell_index": 60,
+      "code": "subs.plot()",
+      "output": ""
+    },
+    {
+      "cell_index": 61,
+      "code": "movies.value_counts().head(20).plot(kind='pie')",
+      "output": ""
+    },
+    {
+      "cell_index": 62,
+      "code": "import numpy as np\nimport pandas as pd\n\nsubs = pd.read_csv('/content/subs.csv',squeeze=True)\nsubs",
+      "output": ""
+    },
+    {
+      "cell_index": 63,
+      "code": "vk = pd.read_csv('/content/kohli_ipl.csv',index_col='match_no',squeeze=True)\nvk",
+      "output": ""
+    },
+    {
+      "cell_index": 64,
+      "code": "movies = pd.read_csv('/content/bollywood.csv',index_col='movie',squeeze=True)\nmovies",
+      "output": ""
+    },
+    {
+      "cell_index": 65,
+      "code": "# astype\nimport sys\nsys.getsizeof(vk)",
+      "output": ""
+    },
+    {
+      "cell_index": 66,
+      "code": "sys.getsizeof(vk.astype('int16'))",
+      "output": ""
+    },
+    {
+      "cell_index": 67,
+      "code": "# between\nvk[vk.between(51,99)].size",
+      "output": ""
+    },
+    {
+      "cell_index": 68,
+      "code": "# clip\nsubs",
+      "output": ""
+    },
+    {
+      "cell_index": 69,
+      "code": "subs.clip(100,200)",
+      "output": ""
+    },
+    {
+      "cell_index": 70,
+      "code": "# drop_duplicates\ntemp = pd.Series([1,1,2,2,3,3,4,4])\ntemp",
+      "output": ""
+    },
+    {
+      "cell_index": 71,
+      "code": "temp.drop_duplicates(keep='last')",
+      "output": ""
+    },
+    {
+      "cell_index": 72,
+      "code": "temp.duplicated().sum()",
+      "output": ""
+    },
+    {
+      "cell_index": 73,
+      "code": "vk.duplicated().sum()",
+      "output": ""
+    },
+    {
+      "cell_index": 74,
+      "code": "movies.drop_duplicates()",
+      "output": ""
+    },
+    {
+      "cell_index": 75,
+      "code": "temp = pd.Series([1,2,3,np.nan,5,6,np.nan,8,np.nan,10])\ntemp",
+      "output": ""
+    },
+    {
+      "cell_index": 76,
+      "code": "temp.size",
+      "output": ""
+    },
+    {
+      "cell_index": 77,
+      "code": "temp.count()",
+      "output": ""
+    },
+    {
+      "cell_index": 78,
+      "code": "# isnull\ntemp.isnull().sum()",
+      "output": ""
+    },
+    {
+      "cell_index": 79,
+      "code": "# dropna\ntemp.dropna()",
+      "output": ""
+    },
+    {
+      "cell_index": 80,
+      "code": "# fillna\ntemp.fillna(temp.mean())",
+      "output": ""
+    },
+    {
+      "cell_index": 81,
+      "code": "# isin\nvk[(vk == 49) | (vk == 99)]",
+      "output": ""
+    },
+    {
+      "cell_index": 82,
+      "code": "vk[vk.isin([49,99])]",
+      "output": ""
+    },
+    {
+      "cell_index": 83,
+      "code": "# apply\nmovies",
+      "output": ""
+    },
+    {
+      "cell_index": 84,
+      "code": "movies.apply(lambda x:x.split()[0].upper())",
+      "output": ""
+    },
+    {
+      "cell_index": 85,
+      "code": "subs",
+      "output": ""
+    },
+    {
+      "cell_index": 86,
+      "code": "subs.apply(lambda x:'good day' if x > subs.mean() else 'bad day')",
+      "output": ""
+    },
+    {
+      "cell_index": 87,
+      "code": "subs.mean()",
+      "output": ""
+    },
+    {
+      "cell_index": 88,
+      "code": "# copy\n\nvk",
+      "output": ""
+    },
+    {
+      "cell_index": 89,
+      "code": "new = vk.head()\n\nnew",
+      "output": ""
+    },
+    {
+      "cell_index": 90,
+      "code": "new[1] = 1",
+      "output": ""
+    },
+    {
+      "cell_index": 91,
+      "code": "new = vk.head().copy()",
+      "output": ""
+    },
+    {
+      "cell_index": 92,
+      "code": "new[1] = 100",
+      "output": ""
+    },
+    {
+      "cell_index": 93,
+      "code": "new",
+      "output": ""
+    },
+    {
+      "cell_index": 94,
+      "code": "vk",
+      "output": ""
+    }
+  ]
+}

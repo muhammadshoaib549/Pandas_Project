@@ -1,0 +1,96 @@
+{
+  "file_path": "/home/shoaib/Desktop/Pandas_Project/season22t.ipynb",
+  "relative_path": "season22t.ipynb",
+  "cells": [
+    {
+      "cell_index": 1,
+      "code": "import pandas as pd\nimport numpy as np",
+      "output": ""
+    },
+    {
+      "cell_index": 2,
+      "code": "a = np.array([1,2,3,4])\na * 4",
+      "output": ""
+    },
+    {
+      "cell_index": 3,
+      "code": "s = ['cat','mat',None,'rat']\ntry:\n    [i.startswith('c') for i in s]\nexcept AttributeError as e:\n    print(\"AttributeError:\", e)",
+      "output": ""
+    },
+    {
+      "cell_index": 4,
+      "code": "s = pd.Series(['cat','mat',None,'rat'])\n# string accessor\ns.str.startswith('c')",
+      "output": ""
+    },
+    {
+      "cell_index": 5,
+      "code": "df = pd.read_csv('titanic.csv')\ndf['Name']",
+      "output": ""
+    },
+    {
+      "cell_index": 6,
+      "code": "df['Name'].str.upper()\ndf['Name'].str.capitalize()\ndf['Name'].str.title()",
+      "output": ""
+    },
+    {
+      "cell_index": 7,
+      "code": "df['Name'][df['Name'].str.len() == 82].values[0]",
+      "output": ""
+    },
+    {
+      "cell_index": 8,
+      "code": "\"                   nitish                              \".strip()",
+      "output": ""
+    },
+    {
+      "cell_index": 9,
+      "code": "df['Name'].str.strip()",
+      "output": ""
+    },
+    {
+      "cell_index": 10,
+      "code": "df['lastname'] = df['Name'].str.split(',').str.get(0)\ndf.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 11,
+      "code": "df[['title','firstname']] = df['Name'].str.split(',').str.get(1).str.strip().str.split(' ', n=1, expand=True)\ndf.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 12,
+      "code": "df['title'].value_counts()",
+      "output": ""
+    },
+    {
+      "cell_index": 13,
+      "code": "df['title'] = df['title'].str.replace('Ms.','Miss.')\ndf['title'] = df['title'].str.replace('Mlle.','Miss.')\ndf['title'].value_counts()",
+      "output": ""
+    },
+    {
+      "cell_index": 14,
+      "code": "df[df['firstname'].str.endswith('A')]",
+      "output": ""
+    },
+    {
+      "cell_index": 15,
+      "code": "df[df['firstname'].str.isdigit()]",
+      "output": ""
+    },
+    {
+      "cell_index": 16,
+      "code": "df[df['firstname'].str.contains('john',case=False)]",
+      "output": ""
+    },
+    {
+      "cell_index": 17,
+      "code": "df[df['lastname'].str.contains('^[^aeiouAEIOU].+[^aeiouAEIOU]$')]",
+      "output": ""
+    },
+    {
+      "cell_index": 18,
+      "code": "df['Name'].str[::-1]",
+      "output": ""
+    }
+  ]
+}

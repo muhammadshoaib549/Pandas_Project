@@ -1,0 +1,311 @@
+{
+  "file_path": "/home/shoaib/Desktop/Pandas_Project/pandassecond.ipynb",
+  "relative_path": "pandassecond.ipynb",
+  "cells": [
+    {
+      "cell_index": 1,
+      "code": "import numpy as np\nimport pandas as pd",
+      "output": ""
+    },
+    {
+      "cell_index": 2,
+      "code": "# using lists\nstudent_data = [\n    [100,80,10],\n    [90,70,7],\n    [120,100,14],\n    [80,50,2]\n]\n\npd.DataFrame(student_data,columns=['iq','marks','package'])",
+      "output": ""
+    },
+    {
+      "cell_index": 3,
+      "code": "# using dicts\n\nstudent_dict = {\n    'name':['nitish','ankit','rupesh','rishabh','amit','ankita'],\n    'iq':[100,90,120,80,0,0],\n    'marks':[80,70,100,50,0,0],\n    'package':[10,7,14,2,0,0]\n}\n\nstudents = pd.DataFrame(student_dict)\nstudents.set_index('name',inplace=True)\nstudents",
+      "output": ""
+    },
+    {
+      "cell_index": 4,
+      "code": "# using read_csv\nmovies = pd.read_csv('movies.csv')\nmovies",
+      "output": ""
+    },
+    {
+      "cell_index": 5,
+      "code": "ipl = pd.read_csv('ipl-matches.csv')\nipl",
+      "output": ""
+    },
+    {
+      "cell_index": 6,
+      "code": "# shape\nmovies.shape\nipl.shape",
+      "output": ""
+    },
+    {
+      "cell_index": 7,
+      "code": "# dtypes\nmovies.dtypes\nipl.dtypes",
+      "output": ""
+    },
+    {
+      "cell_index": 8,
+      "code": "# index\nmovies.index\nipl.index",
+      "output": ""
+    },
+    {
+      "cell_index": 9,
+      "code": "# columns\nmovies.columns\nipl.columns\n# Note: 'student' is referenced here (likely a typo for 'students' in the original session)\ntry:\n    student.columns\nexcept NameError:\n    print(\"student variable is not defined, please use students.columns instead:\")\n    print(students.columns)",
+      "output": ""
+    },
+    {
+      "cell_index": 10,
+      "code": "# values\ntry:\n    student.values\nexcept NameError:\n    print(\"student variable is not defined, please use students.values instead:\")\n    print(students.values)\nipl.values",
+      "output": ""
+    },
+    {
+      "cell_index": 11,
+      "code": "# head and tail\nmovies.head(2)",
+      "output": ""
+    },
+    {
+      "cell_index": 12,
+      "code": "ipl.tail(2)",
+      "output": ""
+    },
+    {
+      "cell_index": 13,
+      "code": "# sample\nipl.sample(5)",
+      "output": ""
+    },
+    {
+      "cell_index": 14,
+      "code": "# info\nmovies.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 15,
+      "code": "ipl.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 16,
+      "code": "# describe\nmovies.describe()",
+      "output": ""
+    },
+    {
+      "cell_index": 17,
+      "code": "ipl.describe()",
+      "output": ""
+    },
+    {
+      "cell_index": 18,
+      "code": "# isnull\nmovies.isnull().sum()",
+      "output": ""
+    },
+    {
+      "cell_index": 19,
+      "code": "# duplicated\nmovies.duplicated().sum()",
+      "output": ""
+    },
+    {
+      "cell_index": 20,
+      "code": "students.duplicated().sum()",
+      "output": ""
+    },
+    {
+      "cell_index": 21,
+      "code": "# rename\nstudents",
+      "output": ""
+    },
+    {
+      "cell_index": 22,
+      "code": "students.rename(columns={'marks':'percent','package':'lpa'},inplace=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 23,
+      "code": "# sum -> axis argument\nstudents.sum(axis=0)",
+      "output": ""
+    },
+    {
+      "cell_index": 24,
+      "code": "students.mean(axis=1)",
+      "output": ""
+    },
+    {
+      "cell_index": 25,
+      "code": "students.var()",
+      "output": ""
+    },
+    {
+      "cell_index": 26,
+      "code": "# single cols\nmovies['title_x']",
+      "output": ""
+    },
+    {
+      "cell_index": 27,
+      "code": "ipl['Venue']",
+      "output": ""
+    },
+    {
+      "cell_index": 28,
+      "code": "# multiple cols\nmovies[['year_of_release','actors','title_x']]",
+      "output": ""
+    },
+    {
+      "cell_index": 29,
+      "code": "ipl[['Team1','Team2','WinningTeam']]",
+      "output": ""
+    },
+    {
+      "cell_index": 30,
+      "code": "# single row\nmovies.iloc[5]",
+      "output": ""
+    },
+    {
+      "cell_index": 31,
+      "code": "# multiple row\nmovies.iloc[:5]",
+      "output": ""
+    },
+    {
+      "cell_index": 32,
+      "code": "# fancy indexing\nmovies.iloc[[0,4,5]]",
+      "output": ""
+    },
+    {
+      "cell_index": 33,
+      "code": "# loc\nstudents",
+      "output": ""
+    },
+    {
+      "cell_index": 34,
+      "code": "students.loc['nitish']",
+      "output": ""
+    },
+    {
+      "cell_index": 35,
+      "code": "students.loc['nitish':'rishabh':2]",
+      "output": ""
+    },
+    {
+      "cell_index": 36,
+      "code": "students.loc[['nitish','ankita','rupesh']]",
+      "output": ""
+    },
+    {
+      "cell_index": 37,
+      "code": "students.iloc[[0,3,4]]",
+      "output": ""
+    },
+    {
+      "cell_index": 38,
+      "code": "movies.iloc[0:3,0:3]",
+      "output": ""
+    },
+    {
+      "cell_index": 39,
+      "code": "movies.loc[0:2,'title_x':'poster_path']",
+      "output": ""
+    },
+    {
+      "cell_index": 40,
+      "code": "ipl.head(2)",
+      "output": ""
+    },
+    {
+      "cell_index": 41,
+      "code": "# find all the final winners\nmask = ipl['MatchNumber'] == 'Final'\nnew_df = ipl[mask]\nnew_df[['Season','WinningTeam']]",
+      "output": ""
+    },
+    {
+      "cell_index": 42,
+      "code": "ipl[ipl['MatchNumber'] == 'Final'][['Season','WinningTeam']]",
+      "output": ""
+    },
+    {
+      "cell_index": 43,
+      "code": "# how many super over finishes have occured\nipl[ipl['SuperOver'] == 'Y'].shape[0]",
+      "output": ""
+    },
+    {
+      "cell_index": 44,
+      "code": "# how many matches has csk won in kolkata\nipl[(ipl['City'] == 'Kolkata') & (ipl['WinningTeam'] == 'Chennai Super Kings')].shape[0]",
+      "output": ""
+    },
+    {
+      "cell_index": 45,
+      "code": "# toss winner is match winner in percentage\n(ipl[ipl['TossWinner'] == ipl['WinningTeam']].shape[0]/ipl.shape[0])*100",
+      "output": ""
+    },
+    {
+      "cell_index": 46,
+      "code": "# movies with rating higher than 8 and votes>10000\nmovies[(movies['imdb_rating'] > 8.5) & (movies['imdb_votes'] > 10000)].shape[0]",
+      "output": ""
+    },
+    {
+      "cell_index": 47,
+      "code": "# Action movies with rating higher than 7.5\n# mask1 = movies['genres'].str.split('|').apply(lambda x:'Action' in x)\nmask1 = movies['genres'].str.contains('Action')\nmask2 = movies['imdb_rating'] > 7.5\n\nmovies[mask1 & mask2]",
+      "output": ""
+    },
+    {
+      "cell_index": 48,
+      "code": "# write a function that can return the track record of 2 teams against each other",
+      "output": ""
+    },
+    {
+      "cell_index": 49,
+      "code": "# completely new\nmovies['Country'] = 'India'\nmovies.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 50,
+      "code": "# from existing ones\nmovies.dropna(inplace=True)\n\nmovies['lead actor'] = movies['actors'].str.split('|').apply(lambda x:x[0])\nmovies.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 51,
+      "code": "movies.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 52,
+      "code": "# astype\nipl.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 53,
+      "code": "ipl['ID'] = ipl['ID'].astype('int32')",
+      "output": ""
+    },
+    {
+      "cell_index": 54,
+      "code": "ipl.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 55,
+      "code": "# ipl['Season'] = ipl['Season'].astype('category')\nipl['Team1'] = ipl['Team1'].astype('category')\nipl['Team2'] = ipl['Team2'].astype('category')",
+      "output": ""
+    },
+    {
+      "cell_index": 56,
+      "code": "ipl.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 57,
+      "code": "# value_counts",
+      "output": ""
+    },
+    {
+      "cell_index": 58,
+      "code": "# find which player has won most potm -> in finals and qualifiers",
+      "output": ""
+    },
+    {
+      "cell_index": 59,
+      "code": "# Toss decision plot",
+      "output": ""
+    },
+    {
+      "cell_index": 60,
+      "code": "# how many matches each team has played",
+      "output": ""
+    },
+    {
+      "cell_index": 61,
+      "code": "# sort_values -> ascending -> na_position -> inplace -> multiple cols",
+      "output": ""
+    }
+  ]
+}

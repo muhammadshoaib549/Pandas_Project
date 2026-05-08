@@ -1,0 +1,261 @@
+{
+  "file_path": "/home/shoaib/Desktop/Pandas_Project/season21t.ipynb",
+  "relative_path": "season21t.ipynb",
+  "cells": [
+    {
+      "cell_index": 1,
+      "code": "import numpy as np\nimport pandas as pd",
+      "output": ""
+    },
+    {
+      "cell_index": 2,
+      "code": "# can we have multiple index? Let's try\nindex_val = [('cse',2019),('cse',2020),('cse',2021),('cse',2022),('ece',2019),('ece',2020),('ece',2021),('ece',2022)]\na = pd.Series([1,2,3,4,5,6,7,8],index=index_val)\na",
+      "output": ""
+    },
+    {
+      "cell_index": 3,
+      "code": "# The problem?\ntry:\n    a['cse']\nexcept KeyError as e:\n    print(\"KeyError:\", e)",
+      "output": ""
+    },
+    {
+      "cell_index": 4,
+      "code": "# how to create multiindex object\n# 1. pd.MultiIndex.from_tuples()\nindex_val = [('cse',2019),('cse',2020),('cse',2021),('cse',2022),('ece',2019),('ece',2020),('ece',2021),('ece',2022)]\nmultiindex = pd.MultiIndex.from_tuples(index_val)\nmultiindex.levels[1]",
+      "output": ""
+    },
+    {
+      "cell_index": 5,
+      "code": "# 2. pd.MultiIndex.from_product()\npd.MultiIndex.from_product([['cse','ece'],[2019,2020,2021,2022]])",
+      "output": ""
+    },
+    {
+      "cell_index": 6,
+      "code": "# creating a series with multiindex object\ns = pd.Series([1,2,3,4,5,6,7,8],index=multiindex)\ns",
+      "output": ""
+    },
+    {
+      "cell_index": 7,
+      "code": "# how to fetch items from such a series\ns['cse']",
+      "output": ""
+    },
+    {
+      "cell_index": 8,
+      "code": "temp = s.unstack()\ntemp",
+      "output": ""
+    },
+    {
+      "cell_index": 9,
+      "code": "temp.stack()",
+      "output": ""
+    },
+    {
+      "cell_index": 10,
+      "code": "branch_df1 = pd.DataFrame(\n    [\n        [1,2],\n        [3,4],\n        [5,6],\n        [7,8],\n        [9,10],\n        [11,12],\n        [13,14],\n        [15,16],\n    ],\n    index = multiindex,\n    columns = ['avg_package','students']\n)\nbranch_df1",
+      "output": ""
+    },
+    {
+      "cell_index": 11,
+      "code": "branch_df1['students']",
+      "output": ""
+    },
+    {
+      "cell_index": 12,
+      "code": "branch_df2 = pd.DataFrame(\n    [\n        [1,2,0,0],\n        [3,4,0,0],\n        [5,6,0,0],\n        [7,8,0,0],\n    ],\n    index = [2019,2020,2021,2022],\n    columns = pd.MultiIndex.from_product([['delhi','mumbai'],['avg_package','students']])\n)\nbranch_df2",
+      "output": ""
+    },
+    {
+      "cell_index": 13,
+      "code": "branch_df2.loc[2019]",
+      "output": ""
+    },
+    {
+      "cell_index": 14,
+      "code": "branch_df3 = pd.DataFrame(\n    [\n        [1,2,0,0],\n        [3,4,0,0],\n        [5,6,0,0],\n        [7,8,0,0],\n        [9,10,0,0],\n        [11,12,0,0],\n        [13,14,0,0],\n        [15,16,0,0],\n    ],\n    index = multiindex,\n    columns = pd.MultiIndex.from_product([['delhi','mumbai'],['avg_package','students']])\n)\nbranch_df3",
+      "output": ""
+    },
+    {
+      "cell_index": 15,
+      "code": "branch_df3.stack().stack()",
+      "output": ""
+    },
+    {
+      "cell_index": 16,
+      "code": "# head and tail\nbranch_df3.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 17,
+      "code": "# shape\nbranch_df3.shape",
+      "output": ""
+    },
+    {
+      "cell_index": 18,
+      "code": "# info\nbranch_df3.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 19,
+      "code": "# duplicated -> isnull\nbranch_df3.duplicated()\nbranch_df3.isnull()",
+      "output": ""
+    },
+    {
+      "cell_index": 20,
+      "code": "# Extracting rows single\nbranch_df3.loc[('cse',2022)]",
+      "output": ""
+    },
+    {
+      "cell_index": 21,
+      "code": "# multiple\nbranch_df3.loc[('cse',2019):('ece',2020):2]",
+      "output": ""
+    },
+    {
+      "cell_index": 22,
+      "code": "# using iloc\nbranch_df3.iloc[0:5:2]",
+      "output": ""
+    },
+    {
+      "cell_index": 23,
+      "code": "# Extracting cols\nbranch_df3['delhi']['students']",
+      "output": ""
+    },
+    {
+      "cell_index": 24,
+      "code": "branch_df3.iloc[:,1:3]",
+      "output": ""
+    },
+    {
+      "cell_index": 25,
+      "code": "# Extracting both\nbranch_df3.iloc[[0,4],[1,2]]",
+      "output": ""
+    },
+    {
+      "cell_index": 26,
+      "code": "# sort index\n# both -> descending -> diff order\n# based on one level\nbranch_df3.sort_index(ascending=False)\nbranch_df3.sort_index(ascending=[False,True])\nbranch_df3.sort_index(level=0,ascending=[False])",
+      "output": ""
+    },
+    {
+      "cell_index": 27,
+      "code": "# transpose\nbranch_df3.transpose()",
+      "output": ""
+    },
+    {
+      "cell_index": 28,
+      "code": "# swaplevel\nbranch_df3.swaplevel(axis=1)",
+      "output": ""
+    },
+    {
+      "cell_index": 29,
+      "code": "# melt -> simple example branch\n# wide to long\npd.DataFrame({'cse':[120]}).melt()",
+      "output": ""
+    },
+    {
+      "cell_index": 30,
+      "code": "pd.DataFrame({'cse':[120],'ece':[100],'mech':[50]}).melt(var_name='branch',value_name='num_students')",
+      "output": ""
+    },
+    {
+      "cell_index": 31,
+      "code": "pd.DataFrame(\n    {\n        'branch':['cse','ece','mech'],\n        '2020':[100,150,60],\n        '2021':[120,130,80],\n        '2022':[150,140,70]\n    }\n).melt(id_vars=['branch'],var_name='year',value_name='students')",
+      "output": ""
+    },
+    {
+      "cell_index": 32,
+      "code": "death = pd.read_csv('time_series_covid19_deaths_global.csv')\nconfirm = pd.read_csv('time_series_covid19_confirmed_global.csv')\n\ndeath.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 33,
+      "code": "confirm.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 34,
+      "code": "death = death.melt(id_vars=['Province/State','Country/Region','Lat','Long'],var_name='date',value_name='num_deaths')\nconfirm = confirm.melt(id_vars=['Province/State','Country/Region','Lat','Long'],var_name='date',value_name='num_cases')\n\ndeath.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 35,
+      "code": "confirm.merge(death,on=['Province/State','Country/Region','Lat','Long','date'])[['Country/Region','date','num_cases','num_deaths']]",
+      "output": ""
+    },
+    {
+      "cell_index": 36,
+      "code": "import seaborn as sns\ndf = sns.load_dataset('tips')\ndf.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 37,
+      "code": "df.groupby('sex')[['total_bill']].mean()",
+      "output": ""
+    },
+    {
+      "cell_index": 38,
+      "code": "df.groupby(['sex','smoker'])[['total_bill']].mean().unstack()",
+      "output": ""
+    },
+    {
+      "cell_index": 39,
+      "code": "df.pivot_table(index='sex',columns='smoker',values='total_bill')",
+      "output": ""
+    },
+    {
+      "cell_index": 40,
+      "code": "# aggfunc\ndf.pivot_table(index='sex',columns='smoker',values='total_bill',aggfunc='std')",
+      "output": ""
+    },
+    {
+      "cell_index": 41,
+      "code": "# all cols together\ndf.pivot_table(index='sex',columns='smoker')['size']",
+      "output": ""
+    },
+    {
+      "cell_index": 42,
+      "code": "# multidimensional\ndf.pivot_table(index=['sex','smoker'],columns=['day','time'],aggfunc={'size':'mean','tip':'max','total_bill':'sum'},margins=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 43,
+      "code": "# margins\ndf.pivot_table(index='sex',columns='smoker',values='total_bill',aggfunc='sum',margins=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 44,
+      "code": "# plotting graphs\ndf = pd.read_csv('expense_data.csv')\ndf.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 45,
+      "code": "df['Category'].value_counts()",
+      "output": ""
+    },
+    {
+      "cell_index": 46,
+      "code": "df.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 47,
+      "code": "df['Date'] = pd.to_datetime(df['Date'])\ndf.info()",
+      "output": ""
+    },
+    {
+      "cell_index": 48,
+      "code": "df['month'] = df['Date'].dt.month_name()\ndf.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 49,
+      "code": "df.pivot_table(index='month',columns='Category',values='INR',aggfunc='sum',fill_value=0).plot()",
+      "output": ""
+    },
+    {
+      "cell_index": 50,
+      "code": "df.pivot_table(index='month',columns='Income/Expense',values='INR',aggfunc='sum',fill_value=0).plot()",
+      "output": ""
+    },
+    {
+      "cell_index": 51,
+      "code": "df.pivot_table(index='month',columns='Account',values='INR',aggfunc='sum',fill_value=0).plot()",
+      "output": ""
+    }
+  ]
+}

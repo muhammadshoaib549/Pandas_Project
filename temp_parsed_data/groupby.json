@@ -1,0 +1,331 @@
+{
+  "file_path": "/home/shoaib/Desktop/Pandas_Project/groupby.ipynb",
+  "relative_path": "groupby.ipynb",
+  "cells": [
+    {
+      "cell_index": 1,
+      "code": "import numpy as np\nimport pandas as pd\n\na = pd.Series([1,1,1,2,2,3])\na.value_counts()",
+      "output": ""
+    },
+    {
+      "cell_index": 2,
+      "code": "marks = pd.DataFrame([\n    [100,80,10],\n    [90,70,7],\n    [120,100,14],\n    [80,70,14],\n    [80,70,14]\n],columns=['iq','marks','package'])\n\nmarks",
+      "output": ""
+    },
+    {
+      "cell_index": 3,
+      "code": "marks.value_counts()",
+      "output": ""
+    },
+    {
+      "cell_index": 4,
+      "code": "ipl = pd.read_csv('ipl-matches.csv')\nipl[~ipl['MatchNumber'].str.isdigit()]['Player_of_Match'].value_counts()",
+      "output": ""
+    },
+    {
+      "cell_index": 5,
+      "code": "# Toss decision plot\nipl['TossDecision'].value_counts().plot(kind='pie')",
+      "output": ""
+    },
+    {
+      "cell_index": 6,
+      "code": "# how many matches each team has played\n(ipl['Team2'].value_counts() + ipl['Team1'].value_counts()).sort_values(ascending=False)",
+      "output": ""
+    },
+    {
+      "cell_index": 7,
+      "code": "x = pd.Series([12,14,1,56,89])\nx",
+      "output": ""
+    },
+    {
+      "cell_index": 8,
+      "code": "x.sort_values(ascending=False)",
+      "output": ""
+    },
+    {
+      "cell_index": 9,
+      "code": "movies = pd.read_csv('movies.csv')\nmovies.head(4)",
+      "output": ""
+    },
+    {
+      "cell_index": 10,
+      "code": "movies.sort_values('title_x',ascending=False)",
+      "output": ""
+    },
+    {
+      "cell_index": 11,
+      "code": "students = pd.DataFrame(\n    {\n        'name':['nitish','ankit','rupesh',np.nan,'mrityunjay',np.nan,'rishabh',np.nan,'aditya',np.nan],\n        'college':['bit','iit','vit',np.nan,np.nan,'vlsi','ssit',np.nan,np.nan,'git'],\n        'branch':['eee','it','cse',np.nan,'me','ce','civ','cse','bio',np.nan],\n        'cgpa':[6.66,8.25,6.41,np.nan,5.6,9.0,7.4,10,7.4,np.nan],\n        'package':[4,5,6,np.nan,6,7,8,9,np.nan,np.nan]\n    }\n)\n\nstudents",
+      "output": ""
+    },
+    {
+      "cell_index": 12,
+      "code": "students.sort_values('name',na_position='first',ascending=False,inplace=True)\nstudents",
+      "output": ""
+    },
+    {
+      "cell_index": 13,
+      "code": "movies.sort_values(['year_of_release','title_x'],ascending=[True,False])",
+      "output": ""
+    },
+    {
+      "cell_index": 14,
+      "code": "batsman = pd.read_csv('batsman_runs_ipl.csv')\nbatsman.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 15,
+      "code": "batsman['batting_rank'] = batsman['batsman_run'].rank(ascending=False)\nbatsman.sort_values('batting_rank')",
+      "output": ""
+    },
+    {
+      "cell_index": 16,
+      "code": "marks = {\n    'maths':67,\n    'english':57,\n    'science':89,\n    'hindi':100\n}\n\nmarks_series = pd.Series(marks)\nmarks_series",
+      "output": ""
+    },
+    {
+      "cell_index": 17,
+      "code": "marks_series.sort_index(ascending=False)",
+      "output": ""
+    },
+    {
+      "cell_index": 18,
+      "code": "movies.sort_index(ascending=False)",
+      "output": ""
+    },
+    {
+      "cell_index": 19,
+      "code": "batsman.set_index('batter',inplace=True)\nbatsman",
+      "output": ""
+    },
+    {
+      "cell_index": 20,
+      "code": "batsman.reset_index(inplace=True)\nbatsman",
+      "output": ""
+    },
+    {
+      "cell_index": 21,
+      "code": "# how to replace existing index without loosing\nbatsman.reset_index().set_index('batting_rank')",
+      "output": ""
+    },
+    {
+      "cell_index": 22,
+      "code": "# series to dataframe using reset_index\nmarks_series.reset_index()",
+      "output": ""
+    },
+    {
+      "cell_index": 23,
+      "code": "movies.set_index('title_x',inplace=True)\nmovies.rename(columns={'imdb_id':'imdb','poster_path':'link'},inplace=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 24,
+      "code": "movies.rename(index={'Uri: The Surgical Strike':'Uri','Battalion 609':'Battalion'})",
+      "output": ""
+    },
+    {
+      "cell_index": 25,
+      "code": "temp = pd.Series([1,1,2,2,3,3,4,4,5,5,np.nan,np.nan])\nprint(temp)",
+      "output": ""
+    },
+    {
+      "cell_index": 26,
+      "code": "len(temp.unique())",
+      "output": ""
+    },
+    {
+      "cell_index": 27,
+      "code": "temp.nunique()",
+      "output": ""
+    },
+    {
+      "cell_index": 28,
+      "code": "len(ipl['Season'].unique())",
+      "output": ""
+    },
+    {
+      "cell_index": 29,
+      "code": "ipl['Season'].nunique()",
+      "output": ""
+    },
+    {
+      "cell_index": 30,
+      "code": "students['name'][students['name'].isnull()]",
+      "output": ""
+    },
+    {
+      "cell_index": 31,
+      "code": "students['name'][students['name'].notnull()]",
+      "output": ""
+    },
+    {
+      "cell_index": 32,
+      "code": "students['name'].hasnans",
+      "output": ""
+    },
+    {
+      "cell_index": 33,
+      "code": "students",
+      "output": ""
+    },
+    {
+      "cell_index": 34,
+      "code": "students.isnull()",
+      "output": ""
+    },
+    {
+      "cell_index": 35,
+      "code": "students.notnull()",
+      "output": ""
+    },
+    {
+      "cell_index": 36,
+      "code": "students['name'].dropna()",
+      "output": ""
+    },
+    {
+      "cell_index": 37,
+      "code": "students",
+      "output": ""
+    },
+    {
+      "cell_index": 38,
+      "code": "students.dropna(how='any')",
+      "output": ""
+    },
+    {
+      "cell_index": 39,
+      "code": "students.dropna(how='all')",
+      "output": ""
+    },
+    {
+      "cell_index": 40,
+      "code": "students.dropna(subset=['name'])",
+      "output": ""
+    },
+    {
+      "cell_index": 41,
+      "code": "students.dropna(subset=['name','college'])",
+      "output": ""
+    },
+    {
+      "cell_index": 42,
+      "code": "students.dropna(inplace=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 43,
+      "code": "students['name'].fillna('unknown')",
+      "output": ""
+    },
+    {
+      "cell_index": 44,
+      "code": "students",
+      "output": ""
+    },
+    {
+      "cell_index": 45,
+      "code": "students['package'].fillna(students['package'].mean())",
+      "output": ""
+    },
+    {
+      "cell_index": 46,
+      "code": "students['name'].fillna(method='bfill')",
+      "output": ""
+    },
+    {
+      "cell_index": 47,
+      "code": "temp = pd.Series([1,1,1,2,3,3,4,4])\ntemp.drop_duplicates()",
+      "output": ""
+    },
+    {
+      "cell_index": 48,
+      "code": "marks.drop_duplicates(keep='last')",
+      "output": ""
+    },
+    {
+      "cell_index": 49,
+      "code": "# find the last match played by virat kohli in Delhi\nipl['all_players'] = ipl['Team1Players'] + ipl['Team2Players']\nipl.head()",
+      "output": ""
+    },
+    {
+      "cell_index": 50,
+      "code": "def did_kohli_play(players_list):\n  return 'V Kohli' in players_list\n\nipl['did_kohli_play'] = ipl['all_players'].apply(did_kohli_play)\nipl[(ipl['City'] == 'Delhi') & (ipl['did_kohli_play'] == True)].drop_duplicates(subset=['City','did_kohli_play'],keep='first')",
+      "output": ""
+    },
+    {
+      "cell_index": 51,
+      "code": "students.drop_duplicates()",
+      "output": ""
+    },
+    {
+      "cell_index": 52,
+      "code": "temp = pd.Series([10,2,3,16,45,78,10])\ntemp",
+      "output": ""
+    },
+    {
+      "cell_index": 53,
+      "code": "temp.drop(index=[0,6])",
+      "output": ""
+    },
+    {
+      "cell_index": 54,
+      "code": "students",
+      "output": ""
+    },
+    {
+      "cell_index": 55,
+      "code": "students.drop(columns=['branch','cgpa'],inplace=True)",
+      "output": ""
+    },
+    {
+      "cell_index": 56,
+      "code": "students.set_index('name').drop(index=['nitish','aditya'])",
+      "output": ""
+    },
+    {
+      "cell_index": 57,
+      "code": "temp = pd.Series([10,20,30,40,50])\ntemp",
+      "output": ""
+    },
+    {
+      "cell_index": 58,
+      "code": "def sigmoid(value):\n  return 1/1+np.exp(-value)\n\ntemp.apply(sigmoid)",
+      "output": ""
+    },
+    {
+      "cell_index": 59,
+      "code": "points_df = pd.DataFrame(\n    {\n        '1st point':[(3,4),(-6,5),(0,0),(-10,1),(4,5)],\n        '2nd point':[(-3,4),(0,0),(2,2),(10,10),(1,1)]\n    }\n)\n\npoints_df",
+      "output": ""
+    },
+    {
+      "cell_index": 60,
+      "code": "def euclidean(row):\n  pt_A = row['1st point']\n  pt_B = row['2nd point']\n\n  return ((pt_A[0] - pt_B[0])**2 + (pt_A[1] - pt_B[1])**2)**0.5\n\npoints_df['distance'] = points_df.apply(euclidean,axis=1)\npoints_df",
+      "output": ""
+    },
+    {
+      "cell_index": 61,
+      "code": "# isin(series)",
+      "output": ""
+    },
+    {
+      "cell_index": 62,
+      "code": "# corr",
+      "output": ""
+    },
+    {
+      "cell_index": 63,
+      "code": "# nlargest and nsmallest",
+      "output": ""
+    },
+    {
+      "cell_index": 64,
+      "code": "# insert",
+      "output": ""
+    },
+    {
+      "cell_index": 65,
+      "code": "# copy",
+      "output": ""
+    }
+  ]
+}
